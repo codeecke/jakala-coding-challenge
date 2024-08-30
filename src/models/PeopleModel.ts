@@ -6,6 +6,7 @@ import { AbstractModel } from './AbstractModel'
 import { FilmModel } from './FilmModel'
 import { PlanetModel } from './PlanetModel'
 import { SpeciesModel } from './SpeciesModel'
+import { VehicleModel } from './VehicleModel'
 
 export class PeopleModel extends AbstractModel {
   public readonly id: number
@@ -20,7 +21,7 @@ export class PeopleModel extends AbstractModel {
   public homeworld: PlanetModel
   public readonly films: FilmModel[] = []
   public readonly species: SpeciesModel[] = []
-  public readonly vehicles: number[]
+  public readonly vehicles: VehicleModel[] = []
   public readonly starships: number[]
   public readonly created: Date
   public readonly edited: Date
@@ -32,6 +33,7 @@ export class PeopleModel extends AbstractModel {
     const homeworld = this.getIdFromApiUrl(apiData.homeworld)
     const films = apiData.films
     const species = apiData.species
+    const vehicles = apiData.vehicles
 
     this.id = this.getIdFromApiUrl(apiData.url) ?? 0
     this.name = apiData.name
@@ -65,10 +67,17 @@ export class PeopleModel extends AbstractModel {
         this.species.push(species)
       })
     }
+    
 
-    this.vehicles = apiData.vehicles
-      .map((url) => this.getIdFromApiUrl(url))
-      .filter((id) => id !== null)
+    if (vehicles && autoload) {
+      vehicles.forEach(async (vehiclesUri) => {
+        const id = this.getIdFromApiUrl(vehiclesUri)
+        if (!id) return
+        const vehicle = await apiLoader.fetchVehicleById(id, false)
+        this.vehicles.push(vehicle)
+      })
+    }
+
 
     this.starships = apiData.starships
       .map((url) => this.getIdFromApiUrl(url))
@@ -108,12 +117,13 @@ export class PeopleModel extends AbstractModel {
   }
 
   format(key: string): string {
-    switch(key) {
-      case 'height': return (this.height / 100).toFixed(2) + ' m'
-      case 'mass': return this.mass + ' kg'
-      default: return super.format(key)
+    switch (key) {
+      case 'height':
+        return (this.height / 100).toFixed(2) + ' m'
+      case 'mass':
+        return this.mass + ' kg'
+      default:
+        return super.format(key)
     }
-      
   }
-
 }

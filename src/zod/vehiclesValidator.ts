@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { numericStringValidator } from './numericStringValidator'
 
-export const vehiclesValidator = z.object({
+export const vehicleValidator = z.object({
   name: z.string(),
   films: z.array(z.string().url()),
   created: z.string().datetime(),

@@ -29,6 +29,8 @@ export class FilmModel extends AbstractModel {
     const characters = apiData.characters
     const planets = apiData.planets
     const species = apiData.species
+    const vehicles = apiData.vehicles
+
     this.id = this.getIdFromApiUrl(apiData.url) || 0
     this.title = apiData.title
     this.created = apiData.created
@@ -64,10 +66,14 @@ export class FilmModel extends AbstractModel {
         this.species.push(species)
       })
     }
-
-    /*
-    this.vehicles = apiData.vehicles
-    */
+    if (vehicles && autoload) {
+      vehicles.forEach(async (vehiclesUri) => {
+        const id = this.getIdFromApiUrl(vehiclesUri)
+        if (!id) return
+        const vehicle = await apiLoader.fetchVehicleById(id)
+        this.vehicles.push(vehicle)
+      })
+    }
   }
 
   getLabel(key: string): string {

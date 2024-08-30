@@ -4,6 +4,7 @@ import { FilmModel } from '../models/FilmModel'
 import { PeopleModel } from '../models/PeopleModel'
 import { PlanetModel } from '../models/PlanetModel'
 import { SpeciesModel } from '../models/SpeciesModel'
+import { VehicleModel } from '../models/VehicleModel'
 import { filmValidator } from '../zod/filmValidator'
 import {
   filmListResponseValidator,
@@ -15,8 +16,7 @@ import {
 import { peopleValidator } from '../zod/peopleValidator'
 import { planetValidator } from '../zod/planetValidator'
 import { speciesValidator } from '../zod/speciesValidator'
-import { VehicleModel } from '../models/VehicleModel'
-import { vehiclesValidator } from '../zod/vehiclesValidator'
+import { vehicleValidator } from '../zod/vehiclesValidator'
 
 type Cache = {
   [key: string]: AxiosResponse
@@ -139,6 +139,13 @@ class APILoader {
       })
     )
   }
+  async fetchSpeciesById(id: number, autoload: boolean = true) {
+    return await this.fetch<SpeciesModel, typeof speciesValidator>(
+      `/species/${id}/`,
+      speciesValidator,
+      (response) => new SpeciesModel(response, autoload)
+    )
+  }
   async fetchAllVehicles(page: number = 1) {
     type responseType = {
       count: number
@@ -153,14 +160,15 @@ class APILoader {
       })
     )
   }
-
-  async fetchSpeciesById(id: number, autoload: boolean = true) {
-    return await this.fetch<SpeciesModel, typeof speciesValidator>(
-      `/species/${id}/`,
-      speciesValidator,
-      (response) => new SpeciesModel(response, autoload)
+  async fetchVehicleById(id: number, autoload: boolean = true) {
+    return await this.fetch<VehicleModel, typeof vehicleValidator>(
+      `/vehicles/${id}/`,
+      vehicleValidator,
+      (response) => new VehicleModel(response, autoload)
     )
   }
+
+
 }
 
 export const apiLoader = new APILoader()

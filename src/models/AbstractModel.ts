@@ -14,7 +14,7 @@ export abstract class AbstractModel {
   }
 
   protected convertStringToNumber(numericString: string): number {
-    return parseFloat(numericString.replace(',','').trim())
+    return parseFloat(numericString.replace(',', '').trim())
   }
 
   public format(key: string) {

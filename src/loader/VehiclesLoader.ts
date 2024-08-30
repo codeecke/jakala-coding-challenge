@@ -12,7 +12,7 @@ const fetchAllVehicles = async (page: number) => {
 }
 
 const fetchVehicleById = async (id: number) => {
-  const response = await apiLoader.fetchSpeciesById(id)
+  const response = await apiLoader.fetchVehicleById(id)
   return response
 }
 

@@ -37,7 +37,9 @@ export class VehicleModel extends AbstractModel {
     this.manufacturer = apiData.manufacturer
     this.costInCredits = this.convertStringToNumber(apiData.cost_in_credits)
     this.length = this.convertStringToNumber(apiData.length)
-    this.maxAtmospheringSpeed = this.convertStringToNumber(apiData.max_atmosphering_speed)
+    this.maxAtmospheringSpeed = this.convertStringToNumber(
+      apiData.max_atmosphering_speed
+    )
     this.crew = this.convertStringToNumber(apiData.crew)
     this.passengers = this.convertStringToNumber(apiData.passengers)
     this.cargoCapacity = this.convertStringToNumber(apiData.cargo_capacity)
@@ -73,7 +75,7 @@ export class VehicleModel extends AbstractModel {
       pilots: 'pilots',
       model: 'model',
       manufacturer: 'manufacturer',
-      costInCredits: 'cost in credits',
+      costInCredits: 'cost',
       length: 'length',
       maxAtmospheringSpeed: 'max atmosphering speed',
       crew: 'crew',
@@ -84,10 +86,22 @@ export class VehicleModel extends AbstractModel {
     }
     return labels[key]
   }
-  toString(): string {
+  public toString(): string {
     return this.name
   }
-  getDetailLink(): string {
+  public getDetailLink(): string {
     return '/vehicles/' + this.id
+  }
+
+  public format(key: string) {
+      const value = super.format(key)
+      switch(key) {
+        case 'costInCredits': return value + ' credits'
+        case 'length': return value + ' m'
+        case 'crew': return value + ' persons'
+        case 'passengers': return value + ' persons'
+        case 'cargoCapacity': return value + ' kg'
+        default: return value
+      }
   }
 }

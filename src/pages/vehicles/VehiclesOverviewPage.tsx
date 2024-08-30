@@ -2,7 +2,6 @@ import { Pagination } from '@mui/material'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import React from 'react'
 import { tss } from 'tss-react'
-import { SpeciesModel } from '../../models/SpeciesModel'
 import { VehicleModel } from '../../models/VehicleModel'
 
 const useStyle = tss.create({
@@ -32,7 +31,7 @@ export const VehiclesOverviewPage = () => {
       <ul>
         {vehicles.map((vehicle: VehicleModel) => (
           <li key={vehicle.id}>
-            <Link to="/vehicle/$id" params={{ id: vehicle.id }}>
+            <Link to="/vehicles/$id" params={{ id: vehicle.id }}>
               {vehicle.name}
             </Link>
           </li>
