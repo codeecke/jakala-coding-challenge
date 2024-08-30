@@ -30,6 +30,7 @@ export class FilmModel extends AbstractModel {
     const planets = apiData.planets
     const species = apiData.species
     const vehicles = apiData.vehicles
+    const starships = apiData.starships
 
     this.id = this.getIdFromApiUrl(apiData.url) || 0
     this.title = apiData.title
@@ -72,6 +73,14 @@ export class FilmModel extends AbstractModel {
         if (!id) return
         const vehicle = await apiLoader.fetchVehicleById(id)
         this.vehicles.push(vehicle)
+      })
+    }
+    if (starships && autoload) {
+      starships.forEach(async (starshipsUri) => {
+        const id = this.getIdFromApiUrl(starshipsUri)
+        if (!id) return
+        const starship = await apiLoader.fetchStarshipById(id)
+        this.starships.push(starship)
       })
     }
   }

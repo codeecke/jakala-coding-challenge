@@ -11,12 +11,15 @@ import {
   peopleListResponseValidator,
   planetListResponseValidator,
   speciesListResponseValidator,
+  starshipListResponseValidator,
   vehiclesListResponseValidator
 } from '../zod/listResponseValidator'
 import { peopleValidator } from '../zod/peopleValidator'
 import { planetValidator } from '../zod/planetValidator'
 import { speciesValidator } from '../zod/speciesValidator'
 import { vehicleValidator } from '../zod/vehiclesValidator'
+import { StarshipModel } from '../models/StarshipModel'
+import { starshipValidator } from '../zod/starshipValidator'
 
 type Cache = {
   [key: string]: AxiosResponse
@@ -167,7 +170,27 @@ class APILoader {
       (response) => new VehicleModel(response, autoload)
     )
   }
-
+  async fetchAllStarships(page: number = 1) {
+    type responseType = {
+      count: number
+      starships: StarshipModel[]
+    }
+    return this.fetch<responseType, typeof starshipListResponseValidator>(
+      `/starships/?page=${page}`,
+      starshipListResponseValidator,
+      (response) => ({
+        count: response.count,
+        starships: response.results.map((item) => new StarshipModel(item))
+      })
+    )
+  }
+  async fetchStarshipById(id: number, autoload: boolean = true) {
+    return await this.fetch<StarshipModel, typeof starshipValidator>(
+      `/starships/${id}/`,
+      starshipValidator,
+      (response) => new StarshipModel(response, autoload)
+    )
+  }
 
 }
 

@@ -1,12 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { z } from 'zod'
 import { AbstractModel } from '../../models/AbstractModel'
 import { DefaultItem } from './DefaultItem'
 import { UrlItem } from './UrlItem'
+import { ModelItem } from './ModelItem'
 
 export const DetailTableItem: FC<{
   label: string
-  value: number | string | AbstractModel | AbstractModel[]
+  value: number | string | AbstractModel | AbstractModel[] | ReactElement
 }> = ({ label, value }) => {
   const type = typeof value
 
@@ -21,18 +22,16 @@ export const DetailTableItem: FC<{
     return <DefaultItem value={value} label={label} />
   }
 
-  {
-    /*<li key={item.toString()}><ModelItem model={item} /></li>*/
-  }
   if (Array.isArray(value)) {
     const firstItem = value[0]
     if (value.length === 1) {
-      return <DetailTableItem label={label} value={value[0]} />
+      const link = <ModelItem model={firstItem} />
+      return <DefaultItem label={label} value={link} />
     }
     const list = (
       <ul>
         {value.map((item) => (
-          <li key={label + item.toString()}>{item.toString()}</li>
+          <li key={item.toString()}><ModelItem model={item} /></li>
         ))}
       </ul>
     )

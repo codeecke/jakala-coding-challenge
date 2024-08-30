@@ -7,6 +7,7 @@ import { FilmModel } from './FilmModel'
 import { PlanetModel } from './PlanetModel'
 import { SpeciesModel } from './SpeciesModel'
 import { VehicleModel } from './VehicleModel'
+import { StarshipModel } from './StarshipModel'
 
 export class PeopleModel extends AbstractModel {
   public readonly id: number
@@ -22,7 +23,7 @@ export class PeopleModel extends AbstractModel {
   public readonly films: FilmModel[] = []
   public readonly species: SpeciesModel[] = []
   public readonly vehicles: VehicleModel[] = []
-  public readonly starships: number[]
+  public readonly starships: StarshipModel[] = []
   public readonly created: Date
   public readonly edited: Date
   public readonly url: string
@@ -34,6 +35,7 @@ export class PeopleModel extends AbstractModel {
     const films = apiData.films
     const species = apiData.species
     const vehicles = apiData.vehicles
+    const starships = apiData.starships
 
     this.id = this.getIdFromApiUrl(apiData.url) ?? 0
     this.name = apiData.name
@@ -67,7 +69,6 @@ export class PeopleModel extends AbstractModel {
         this.species.push(species)
       })
     }
-    
 
     if (vehicles && autoload) {
       vehicles.forEach(async (vehiclesUri) => {
@@ -77,11 +78,16 @@ export class PeopleModel extends AbstractModel {
         this.vehicles.push(vehicle)
       })
     }
+    
+    if (starships && autoload) {
+      starships.forEach(async (starshipsUri) => {
+        const id = this.getIdFromApiUrl(starshipsUri)
+        if (!id) return
+        const starship = await apiLoader.fetchStarshipById(id, false)
+        this.starships.push(starship)
+      })
+    }
 
-
-    this.starships = apiData.starships
-      .map((url) => this.getIdFromApiUrl(url))
-      .filter((id) => id !== null)
 
     this.created = new Date(apiData.created)
     this.edited = new Date(apiData.edited)

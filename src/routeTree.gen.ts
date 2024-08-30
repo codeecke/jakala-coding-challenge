@@ -11,25 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as StarshipsImport } from './routes/starships'
 import { Route as IndexImport } from './routes/index'
 import { Route as VehiclesIdImport } from './routes/vehicles/$id'
+import { Route as StarshipsIdImport } from './routes/starships/$id'
 import { Route as SpeciesIdImport } from './routes/species/$id'
 import { Route as PlanetsIdImport } from './routes/planets/$id'
 import { Route as PeopleIdImport } from './routes/people/$id'
 import { Route as FilmsIdImport } from './routes/films/$id'
 import { Route as VehiclesListPageImport } from './routes/vehicles/list.$page'
+import { Route as StarshipsListPageImport } from './routes/starships/list.$page'
 import { Route as SpeciesListPageImport } from './routes/species/list.$page'
 import { Route as PlanetsListPageImport } from './routes/planets/list.$page'
 import { Route as PeopleListPageImport } from './routes/people/list.$page'
 import { Route as FilmsListPageImport } from './routes/films/list.$page'
 
 // Create/Update Routes
-
-const StarshipsRoute = StarshipsImport.update({
-  path: '/starships',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -38,6 +34,11 @@ const IndexRoute = IndexImport.update({
 
 const VehiclesIdRoute = VehiclesIdImport.update({
   path: '/vehicles/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StarshipsIdRoute = StarshipsIdImport.update({
+  path: '/starships/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -63,6 +64,11 @@ const FilmsIdRoute = FilmsIdImport.update({
 
 const VehiclesListPageRoute = VehiclesListPageImport.update({
   path: '/vehicles/list/$page',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StarshipsListPageRoute = StarshipsListPageImport.update({
+  path: '/starships/list/$page',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -97,13 +103,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/starships': {
-      id: '/starships'
-      path: '/starships'
-      fullPath: '/starships'
-      preLoaderRoute: typeof StarshipsImport
-      parentRoute: typeof rootRoute
-    }
     '/films/$id': {
       id: '/films/$id'
       path: '/films/$id'
@@ -130,6 +129,13 @@ declare module '@tanstack/react-router' {
       path: '/species/$id'
       fullPath: '/species/$id'
       preLoaderRoute: typeof SpeciesIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/starships/$id': {
+      id: '/starships/$id'
+      path: '/starships/$id'
+      fullPath: '/starships/$id'
+      preLoaderRoute: typeof StarshipsIdImport
       parentRoute: typeof rootRoute
     }
     '/vehicles/$id': {
@@ -167,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpeciesListPageImport
       parentRoute: typeof rootRoute
     }
+    '/starships/list/$page': {
+      id: '/starships/list/$page'
+      path: '/starships/list/$page'
+      fullPath: '/starships/list/$page'
+      preLoaderRoute: typeof StarshipsListPageImport
+      parentRoute: typeof rootRoute
+    }
     '/vehicles/list/$page': {
       id: '/vehicles/list/$page'
       path: '/vehicles/list/$page'
@@ -181,16 +194,17 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  StarshipsRoute,
   FilmsIdRoute,
   PeopleIdRoute,
   PlanetsIdRoute,
   SpeciesIdRoute,
+  StarshipsIdRoute,
   VehiclesIdRoute,
   FilmsListPageRoute,
   PeopleListPageRoute,
   PlanetsListPageRoute,
   SpeciesListPageRoute,
+  StarshipsListPageRoute,
   VehiclesListPageRoute,
 })
 
@@ -203,24 +217,22 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/starships",
         "/films/$id",
         "/people/$id",
         "/planets/$id",
         "/species/$id",
+        "/starships/$id",
         "/vehicles/$id",
         "/films/list/$page",
         "/people/list/$page",
         "/planets/list/$page",
         "/species/list/$page",
+        "/starships/list/$page",
         "/vehicles/list/$page"
       ]
     },
     "/": {
       "filePath": "index.tsx"
-    },
-    "/starships": {
-      "filePath": "starships.tsx"
     },
     "/films/$id": {
       "filePath": "films/$id.tsx"
@@ -233,6 +245,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/species/$id": {
       "filePath": "species/$id.tsx"
+    },
+    "/starships/$id": {
+      "filePath": "starships/$id.tsx"
     },
     "/vehicles/$id": {
       "filePath": "vehicles/$id.tsx"
@@ -248,6 +263,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/species/list/$page": {
       "filePath": "species/list.$page.tsx"
+    },
+    "/starships/list/$page": {
+      "filePath": "starships/list.$page.tsx"
     },
     "/vehicles/list/$page": {
       "filePath": "vehicles/list.$page.tsx"

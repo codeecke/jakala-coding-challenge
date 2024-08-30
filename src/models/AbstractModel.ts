@@ -2,6 +2,7 @@ import { ApiUrl } from '../types'
 import { apiUrlValidator } from '../zod/apiUrlValidator'
 
 export abstract class AbstractModel {
+  public readonly isModel = true
   abstract getLabel(key: string): string
   abstract toString(): string
   abstract getDetailLink(): string
@@ -14,6 +15,11 @@ export abstract class AbstractModel {
   }
 
   protected convertStringToNumber(numericString: string): number {
+    const unkndownValues = ['unknown', 'n/a', 'indefinite', 'none']
+    const isNotNumeric = (unkndownValue) => unkndownValue === numericString
+    if (unkndownValues.some(isNotNumeric)) {
+      return NaN
+    }
     return parseFloat(numericString.replace(',', '').trim())
   }
 

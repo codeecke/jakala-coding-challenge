@@ -3,9 +3,10 @@ import { Link, useLoaderData } from '@tanstack/react-router'
 import React from 'react'
 import { DetailTable } from '../../components/DetailTable/DetailTable'
 import { VehicleModel } from '../../models/VehicleModel'
+import { StarshipModel } from '../../models/StarshipModel'
 
-export const VehiclesDetailsPage = () => {
-  const data: VehicleModel = useLoaderData({ from: '/vehicles/$id' })
+export const StarshipsDetailsPage = () => {
+  const data: StarshipModel = useLoaderData({ from: '/starships/$id' })
 
   return (
     <>
@@ -13,23 +14,27 @@ export const VehiclesDetailsPage = () => {
       <DetailTable
         model={data}
         order={[
-          'name',
-          'model',
-          'manufacturer',
-          'length',
-          'maxAtmospheringSpeed',
-          'costInCredits',
-          'crew',
-          'passengers',
           'cargoCapacity',
           'consumables',
-          'vehicleClass',
-          'pilots',
+          'costInCredits',
+          'created',
+          'crew',
+          'edited',
           'films',
-          'url'
+          'hyperdriveRating',
+          'length',
+          'manufacturer',
+          'maxAtmospheringSpeed',
+          'MGLT',
+          'model',
+          'name',
+          'passengers',
+          'pilots',
+          'starshipClass',
+          'url',
         ]}
       />
-      <Link to="/vehicles/list/$page" params={{ page: 1 }}>
+      <Link to="/starships/list/$page" params={{ page: 1 }}>
         <Button sx={{ mt: 4 }} variant="contained">
           Back to overview
         </Button>

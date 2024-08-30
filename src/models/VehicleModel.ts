@@ -94,14 +94,20 @@ export class VehicleModel extends AbstractModel {
   }
 
   public format(key: string) {
-      const value = super.format(key)
-      switch(key) {
-        case 'costInCredits': return value + ' credits'
-        case 'length': return value + ' m'
-        case 'crew': return value + ' persons'
-        case 'passengers': return value + ' persons'
-        case 'cargoCapacity': return value + ' kg'
-        default: return value
-      }
+    const value = super.format(key)
+    switch (key) {
+      case 'costInCredits':
+        return value + ' credits'
+      case 'length':
+        return value + ' m'
+      case 'crew':
+        return value + ' persons'
+      case 'passengers':
+        return value + ' persons'
+      case 'cargoCapacity':
+        return value + ' kg'
+      default:
+        return value
+    }
   }
 }

@@ -3,6 +3,7 @@ import { filmValidator } from './filmValidator'
 import { peopleValidator } from './peopleValidator'
 import { planetValidator } from './planetValidator'
 import { speciesValidator } from './speciesValidator'
+import { starshipValidator } from './starshipValidator'
 import { vehicleValidator } from './vehiclesValidator'
 
 const generateReponseValidator = (itemValidator: ZodSchema) => {
@@ -21,7 +22,12 @@ export const planetListResponseValidator =
   generateReponseValidator(planetValidator)
 
 export const filmListResponseValidator = generateReponseValidator(filmValidator)
+
 export const speciesListResponseValidator =
   generateReponseValidator(speciesValidator)
+
 export const vehiclesListResponseValidator =
   generateReponseValidator(vehicleValidator)
+
+export const starshipListResponseValidator =
+  generateReponseValidator(starshipValidator)
