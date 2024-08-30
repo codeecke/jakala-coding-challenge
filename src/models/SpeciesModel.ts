@@ -71,21 +71,19 @@ export class SpeciesModel extends AbstractModel {
 
   getLabel(key: string): string {
     const labels = {
-      name: 'name',
-      created: 'created',
-      edited: 'edited',
-      url: 'url',
-      classification: 'classification',
-      designation: 'designation',
-      averageHeight: 'averageHeight',
-      skinColors: 'skin olors',
-      hairColors: 'hair olors',
-      eyeColors: 'eye colors',
-      averageLifespan: 'averageLifespan',
-      homeworld: 'homeworld',
-      language: 'language',
-      films: 'films',
-      people: 'people'
+      name: 'Name',
+      url: 'API',
+      classification: 'Classification',
+      designation: 'Designation',
+      averageHeight: 'Average height',
+      skinColors: 'Skin colors',
+      hairColors: 'Hair colors',
+      eyeColors: 'Eye colors',
+      averageLifespan: 'Average lifespan',
+      homeworld: 'Homeworld',
+      language: 'Language',
+      films: 'Films',
+      people: 'People'
     }
     return labels[key]
   }

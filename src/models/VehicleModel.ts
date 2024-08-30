@@ -67,22 +67,20 @@ export class VehicleModel extends AbstractModel {
 
   getLabel(key: string): string {
     const labels = {
-      name: 'name',
-      films: 'films',
-      created: 'created',
-      edited: 'edited',
-      url: 'url',
-      pilots: 'pilots',
-      model: 'model',
-      manufacturer: 'manufacturer',
-      costInCredits: 'cost',
-      length: 'length',
-      maxAtmospheringSpeed: 'max atmosphering speed',
-      crew: 'crew',
-      passengers: 'passengers',
-      cargoCapacity: 'cargo capacity',
-      consumables: 'consumables',
-      vehicleClass: 'vehicle class'
+      name: 'Name',
+      films: 'Films',
+      url: 'API',
+      pilots: 'Pilots',
+      model: 'Model',
+      manufacturer: 'Manufacturer',
+      costInCredits: 'Cost',
+      length: 'Length',
+      maxAtmospheringSpeed: 'Max atmosphering speed',
+      crew: 'Crew',
+      passengers: 'Passengers',
+      cargoCapacity: 'Cargo capacity',
+      consumables: 'Consumables',
+      vehicleClass: 'Vehicle class'
     }
     return labels[key]
   }
@@ -97,13 +95,13 @@ export class VehicleModel extends AbstractModel {
     const value = super.format(key)
     switch (key) {
       case 'costInCredits':
-        return value + ' credits'
+        return isNaN(value) ? 'unknown' : value + ' credits'
       case 'length':
         return value + ' m'
       case 'crew':
-        return value + ' persons'
+        return value === 0 ? 'none' : value + ' persons'
       case 'passengers':
-        return value + ' persons'
+        return value === 0 ? 'none' : value + ' persons'
       case 'cargoCapacity':
         return value + ' kg'
       default:

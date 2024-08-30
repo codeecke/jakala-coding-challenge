@@ -87,20 +87,18 @@ export class FilmModel extends AbstractModel {
 
   getLabel(key: string): string {
     const labels = {
-      title: 'title',
-      created: 'created',
-      edited: 'edited',
-      url: 'url',
-      episodeId: 'episodeId',
-      openingCrawl: 'openingCrawl',
-      director: 'director',
-      producer: 'producer',
-      releaseDate: 'releaseDate',
-      characters: 'characters',
-      planets: 'planets',
-      starships: 'starships',
-      vehicles: 'vehicles',
-      species: 'species'
+      title: 'Title',
+      url: 'API',
+      episodeId: 'Episode',
+      openingCrawl: 'Opening crawl',
+      director: 'Director',
+      producer: 'Producer',
+      releaseDate: 'Release',
+      characters: 'Characters',
+      planets: 'Planets',
+      starships: 'Starships',
+      vehicles: 'Vehicles',
+      species: 'Species'
     }
     return labels[key]
   }

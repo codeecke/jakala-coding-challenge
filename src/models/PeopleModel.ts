@@ -109,7 +109,7 @@ export class PeopleModel extends AbstractModel {
       species: 'Species',
       vehicles: 'Vehicles',
       starships: 'Starships',
-      url: 'API-Uri'
+      url: 'API'
     }
     return labels[key]
   }
