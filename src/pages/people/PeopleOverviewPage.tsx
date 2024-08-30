@@ -1,4 +1,4 @@
-import { Grid2, Pagination } from '@mui/material'
+import { Grid, Pagination } from '@mui/material'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import React from 'react'
 import { tss } from 'tss-react'
@@ -27,16 +27,16 @@ export const PeopleOverviewPage = () => {
   }
 
   const items = people?.map((item: PeopleModel) => (
-    <Grid2 size={{ xs: 6, md: 3 }} key={item.id}>
+    <Grid item xs={6} md={3} key={item.id}>
       <PeopleListItem item={item} />
-    </Grid2>
+    </Grid>
   )) ?? <>Nothing found</>
 
   return (
     <>
-      <Grid2 container spacing={4}>
+      <Grid container spacing={4}>
         {items}
-      </Grid2>
+      </Grid>
       <div className={cx(classes.paginationWrapper)}>
         <Pagination
           count={pageCount}
