@@ -3,6 +3,6 @@
         "jsx": "react",
         "esModuleInterop": true,
         "strictNullChecks": true,
-        "lib": ["ES2015"]
+        "lib": ["ES2015", "DOM"]
     }
  }

@@ -1,22 +1,23 @@
 import { z } from 'zod'
-import { ApiUrlValidator } from './ApiUrlValidator'
-import { GenderValidator } from './GenderValidator'
+import { apiUrlValidator } from './apiUrlValidator'
+import { genderValidator } from './genderValidator'
+import { numericStringValidator } from './numericStringValidator'
 
-export const PeopleValidator = z.object({
+export const peopleValidator = z.object({
   name: z.string(),
-  height: z.string().regex(/^\d+$/),
-  mass: z.string().regex(/^\d+$/),
+  height: numericStringValidator,
+  mass: numericStringValidator,
   hair_color: z.string(),
   skin_color: z.string(),
   eye_color: z.string(),
   birth_year: z.string(),
-  gender: GenderValidator,
-  homeworld: ApiUrlValidator,
-  films: ApiUrlValidator.array(),
-  species: ApiUrlValidator.array(),
-  vehicles: ApiUrlValidator.array(),
-  starships: ApiUrlValidator.array(),
+  gender: genderValidator,
+  homeworld: apiUrlValidator,
+  films: apiUrlValidator.array(),
+  species: apiUrlValidator.array(),
+  vehicles: apiUrlValidator.array(),
+  starships: apiUrlValidator.array(),
   created: z.string().datetime(),
   edited: z.string().datetime(),
-  url: ApiUrlValidator
+  url: apiUrlValidator
 })

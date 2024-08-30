@@ -19,6 +19,7 @@ const useStyles = tss
       display: 'flex',
       alignItems: 'center',
       flexDirection: 'column',
+      width: '100vw',
 
       [theme.breakpoints.up('md')]: {
         position: 'fixed',

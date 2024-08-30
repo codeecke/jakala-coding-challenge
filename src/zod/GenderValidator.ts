@@ -1,7 +1,9 @@
 import { z } from 'zod'
 
-export const GenderValidator = z.union([
+export const genderValidator = z.union([
   z.literal('male'),
   z.literal('female'),
-  z.literal('n/a')
+  z.literal('hermaphrodite'),
+  z.literal('none'),
+  z.literal('n/a'),
 ])

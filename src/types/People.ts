@@ -1,4 +1,4 @@
 import { z } from 'zod'
-import { PeopleValidator } from '../zod/PeopleValidator'
+import { peopleValidator } from '../zod/peopleValidator'
 
-export type People = z.infer<typeof PeopleValidator>
+export type People = z.infer<typeof peopleValidator>

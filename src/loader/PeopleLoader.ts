@@ -1,21 +1,26 @@
 import { apiLoader } from '../helper/apiLoader'
-import { PeopleModel } from '../models/People'
-import { PeopleValidator } from '../zod/PeopleValidator'
 
-export const PeopleLoader = async (data) => {
-  const page = data?.params?.page ?? 1
-  const response = await apiLoader.fetchAllPeople(page)
-  const { count, results } = response
+const fetchAllPeople = async (page: number) => {
+  const { count, people } = await apiLoader.fetchAllPeople(page)
   const itemsPerPage = 10
 
   return {
-    page: parseInt(page),
+    page: page,
     pageCount: Math.ceil(count / itemsPerPage),
-    people: results.map((item) => {
-      if (!PeopleValidator.safeParse(item)) {
-        throw new Error('invalid response')
-      }
-      return new PeopleModel(item)
-    })
+    people
   }
+}
+
+const fetchPeopleById = async (id: number) => {
+  const response = await apiLoader.fetchPersonById(id, true)
+  return response
+}
+
+export const PeopleLoader = async (data) => {
+  const page = data?.params?.page ?? 1
+  const peopleId = data?.params?.id
+  if (peopleId) {
+    return fetchPeopleById(parseInt(peopleId))
+  }
+  return fetchAllPeople(parseInt(page))
 }

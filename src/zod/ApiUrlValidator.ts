@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const ApiUrlValidator = z
+export const apiUrlValidator = z
   .string()
   .url()
   .regex(/\/\d+\/$/)

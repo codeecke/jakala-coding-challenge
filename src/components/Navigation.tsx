@@ -26,42 +26,66 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
     <List className={className}>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/people/list/1">
+          <Link
+            className={cx(classes.link)}
+            to="/people/list/$page"
+            params={{ page: 1 }}
+          >
             People
           </Link>
         </ListItemButton>
       </ListItem>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/planets">
+          <Link
+            className={cx(classes.link)}
+            to="/planets/list/$page"
+            params={{ page: 1 }}
+          >
             Planets
           </Link>
         </ListItemButton>
       </ListItem>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/films">
+          <Link
+            className={cx(classes.link)}
+            to="/films/list/$page"
+            params={{ page: 1 }}
+          >
             Films
           </Link>
         </ListItemButton>
       </ListItem>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/species">
+          <Link
+            className={cx(classes.link)}
+            to="/species/list/$page"
+            params={{ page: 1 }}
+          >
             Species
           </Link>
         </ListItemButton>
       </ListItem>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/vehicles">
+          <Link
+            className={cx(classes.link)}
+            to="/vehicles/list/$page"
+            params={{ page: 1 }}
+          >
             Vehicles
           </Link>
         </ListItemButton>
       </ListItem>
       <ListItem>
         <ListItemButton className={cx(classes.button)}>
-          <Link className={cx(classes.link)} to="/starships">
+          <Link
+            className={cx(classes.link)}
+            to="/starships/list/$page"
+            params={{ page: 1 }}
+          >
             Starships
           </Link>
         </ListItemButton>

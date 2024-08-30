@@ -2,8 +2,8 @@ import { Card } from '@mui/material'
 import { Link } from '@tanstack/react-router'
 import React, { FC } from 'react'
 import { tss } from 'tss-react'
-import images from '../../data/images'
-import { PeopleModel } from '../models/People'
+import images from '../assets/people-images'
+import { PeopleModel } from '../models/PeopleModel'
 
 const useStyle = tss.create({
   root: {
