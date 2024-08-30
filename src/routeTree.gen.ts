@@ -11,61 +11,61 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as VehiclesImport } from './routes/vehicles'
-import { Route as StarshipsImport } from './routes/starships'
-import { Route as SpeciesImport } from './routes/species'
-import { Route as PlanetsImport } from './routes/planets'
 import { Route as FilmsImport } from './routes/films'
 import { Route as IndexImport } from './routes/index'
+import { Route as PeopleIdPageImport } from './routes/people/$id/$page'
 import { Route as PeopleIdIndexImport } from './routes/people/$id/index'
 import { Route as PeopleListPageImport } from './routes/people/list.$page'
-import { Route as PeopleIdPageImport } from './routes/people/$id/$page'
+import { Route as PlanetsImport } from './routes/planets'
+import { Route as SpeciesImport } from './routes/species'
+import { Route as StarshipsImport } from './routes/starships'
+import { Route as VehiclesImport } from './routes/vehicles'
 
 // Create/Update Routes
 
 const VehiclesRoute = VehiclesImport.update({
   path: '/vehicles',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const StarshipsRoute = StarshipsImport.update({
   path: '/starships',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const SpeciesRoute = SpeciesImport.update({
   path: '/species',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const PlanetsRoute = PlanetsImport.update({
   path: '/planets',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const FilmsRoute = FilmsImport.update({
   path: '/films',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const PeopleIdIndexRoute = PeopleIdIndexImport.update({
   path: '/people/$id/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const PeopleListPageRoute = PeopleListPageImport.update({
   path: '/people/list/$page',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const PeopleIdPageRoute = PeopleIdPageImport.update({
   path: '/people/$id/$page',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -149,7 +149,7 @@ export const routeTree = rootRoute.addChildren({
   VehiclesRoute,
   PeopleIdPageRoute,
   PeopleListPageRoute,
-  PeopleIdIndexRoute,
+  PeopleIdIndexRoute
 })
 
 /* prettier-ignore-end */

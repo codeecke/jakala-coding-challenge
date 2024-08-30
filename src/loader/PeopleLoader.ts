@@ -16,6 +16,6 @@ export const PeopleLoader = async (data) => {
         throw new Error('invalid response')
       }
       return new PeopleModel(item)
-    }),
+    })
   }
 }

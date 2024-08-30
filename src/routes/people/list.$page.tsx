@@ -5,5 +5,5 @@ import { PeopleOverviewPage } from '../../pages/People'
 export const Route = createFileRoute('/people/list/$page')({
   loader: PeopleLoader,
   component: PeopleOverviewPage,
-  staleTime: Infinity,
+  staleTime: Infinity
 })

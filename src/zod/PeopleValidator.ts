@@ -18,5 +18,5 @@ export const PeopleValidator = z.object({
   starships: ApiUrlValidator.array(),
   created: z.string().datetime(),
   edited: z.string().datetime(),
-  url: ApiUrlValidator,
+  url: ApiUrlValidator
 })

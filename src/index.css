@@ -4,7 +4,6 @@
   --hightlight-color: #ffe81f;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -12,4 +11,3 @@ body {
   min-height: 100vh;
   font-family: sans-serif;
 }
-

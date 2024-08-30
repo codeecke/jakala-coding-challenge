@@ -7,7 +7,7 @@ import { PeopleModel } from '../models/People'
 
 const useStyle = tss.create({
   root: {
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
   image: {
     width: '100%',
@@ -16,7 +16,7 @@ const useStyle = tss.create({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundColor: '#000',
-    zIndex: 1,
+    zIndex: 1
   },
   label: {
     textAlign: 'center',
@@ -27,13 +27,13 @@ const useStyle = tss.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  },
+  }
 })
 
 export const PeopleListItem: FC<{ item: PeopleModel }> = ({ item }) => {
   const { cx, classes } = useStyle()
   const image = images.find(
-    (image) => image.name === item.name.toLocaleLowerCase(),
+    (image) => image.name === item.name.toLocaleLowerCase()
   )?.image
   return (
     <Link

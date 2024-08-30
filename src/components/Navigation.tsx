@@ -8,18 +8,18 @@ const useStyles = tss.create({
     position: 'fixed',
     top: 0,
     bottom: 0,
-    left: 0,
+    left: 0
   },
   link: {
     color: 'var(--nav-link-color)',
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
   button: {
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 })
 
-export const Navigation: FC<{className: string}> = ({className}) => {
+export const Navigation: FC<{ className: string }> = ({ className }) => {
   const [value, setValue] = useState('')
   const { cx, classes } = useStyles()
   return (
