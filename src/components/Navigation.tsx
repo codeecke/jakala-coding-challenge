@@ -19,8 +19,7 @@ const useStyles = tss.create({
   }
 })
 
-export const Navigation: FC<{ className: string }> = ({ className }) => {
-  const [value, setValue] = useState('')
+export const Navigation: FC<{ className: string, onClick: () => void }> = ({ className, onClick }) => {
   const { cx, classes } = useStyles()
   return (
     <List className={className}>
@@ -30,6 +29,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/people/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             People
           </Link>
@@ -41,6 +41,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/planets/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             Planets
           </Link>
@@ -52,6 +53,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/films/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             Films
           </Link>
@@ -63,6 +65,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/species/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             Species
           </Link>
@@ -74,6 +77,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/vehicles/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             Vehicles
           </Link>
@@ -85,6 +89,7 @@ export const Navigation: FC<{ className: string }> = ({ className }) => {
             className={cx(classes.link)}
             to="/starships/list/$page"
             params={{ page: 1 }}
+            onClick={onClick}
           >
             Starships
           </Link>
