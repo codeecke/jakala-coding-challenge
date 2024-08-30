@@ -2,7 +2,6 @@ import { Button } from '@mui/material'
 import { Link, useLoaderData } from '@tanstack/react-router'
 import React from 'react'
 import { DetailTable } from '../../components/DetailTable/DetailTable'
-import { VehicleModel } from '../../models/VehicleModel'
 import { StarshipModel } from '../../models/StarshipModel'
 
 export const StarshipsDetailsPage = () => {
@@ -31,7 +30,7 @@ export const StarshipsDetailsPage = () => {
           'passengers',
           'pilots',
           'starshipClass',
-          'url',
+          'url'
         ]}
       />
       <Link to="/starships/list/$page" params={{ page: 1 }}>

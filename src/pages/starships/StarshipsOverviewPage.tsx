@@ -2,7 +2,6 @@ import { Pagination } from '@mui/material'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import React from 'react'
 import { tss } from 'tss-react'
-import { VehicleModel } from '../../models/VehicleModel'
 import { StarshipModel } from '../../models/StarshipModel'
 
 const useStyle = tss.create({

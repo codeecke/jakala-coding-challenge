@@ -4,6 +4,7 @@ import { FilmModel } from '../models/FilmModel'
 import { PeopleModel } from '../models/PeopleModel'
 import { PlanetModel } from '../models/PlanetModel'
 import { SpeciesModel } from '../models/SpeciesModel'
+import { StarshipModel } from '../models/StarshipModel'
 import { VehicleModel } from '../models/VehicleModel'
 import { filmValidator } from '../zod/filmValidator'
 import {
@@ -17,9 +18,8 @@ import {
 import { peopleValidator } from '../zod/peopleValidator'
 import { planetValidator } from '../zod/planetValidator'
 import { speciesValidator } from '../zod/speciesValidator'
-import { vehicleValidator } from '../zod/vehiclesValidator'
-import { StarshipModel } from '../models/StarshipModel'
 import { starshipValidator } from '../zod/starshipValidator'
+import { vehicleValidator } from '../zod/vehiclesValidator'
 
 type Cache = {
   [key: string]: AxiosResponse
@@ -191,7 +191,6 @@ class APILoader {
       (response) => new StarshipModel(response, autoload)
     )
   }
-
 }
 
 export const apiLoader = new APILoader()

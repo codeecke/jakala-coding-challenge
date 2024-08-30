@@ -87,7 +87,7 @@ export class StarshipModel extends AbstractModel {
       passengers: 'Passengers',
       pilots: 'Pilots',
       starshipClass: 'Starship class',
-      url: 'API',
+      url: 'API'
     }
     return labels[key]
   }

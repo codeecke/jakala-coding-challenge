@@ -93,7 +93,10 @@ export const Layout: React.FC = () => {
               <span></span>
             </div>
           </div>
-          <Navigation className={cx(classes.nav)} onClick={() => setMobileNavVisibility(false)} />
+          <Navigation
+            className={cx(classes.nav)}
+            onClick={() => setMobileNavVisibility(false)}
+          />
         </div>
         <div className={cx(classes.content)}>
           <Outlet />

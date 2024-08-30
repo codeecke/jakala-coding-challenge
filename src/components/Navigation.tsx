@@ -1,6 +1,6 @@
 import { List, ListItem, ListItemButton } from '@mui/material'
 import { Link } from '@tanstack/react-router'
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { tss } from 'tss-react'
 
 const useStyles = tss.create({
@@ -19,7 +19,10 @@ const useStyles = tss.create({
   }
 })
 
-export const Navigation: FC<{ className: string, onClick: () => void }> = ({ className, onClick }) => {
+export const Navigation: FC<{ className: string; onClick: () => void }> = ({
+  className,
+  onClick
+}) => {
   const { cx, classes } = useStyles()
   return (
     <List className={className}>

@@ -6,8 +6,8 @@ import { AbstractModel } from './AbstractModel'
 import { FilmModel } from './FilmModel'
 import { PlanetModel } from './PlanetModel'
 import { SpeciesModel } from './SpeciesModel'
-import { VehicleModel } from './VehicleModel'
 import { StarshipModel } from './StarshipModel'
+import { VehicleModel } from './VehicleModel'
 
 export class PeopleModel extends AbstractModel {
   public readonly id: number
@@ -78,7 +78,7 @@ export class PeopleModel extends AbstractModel {
         this.vehicles.push(vehicle)
       })
     }
-    
+
     if (starships && autoload) {
       starships.forEach(async (starshipsUri) => {
         const id = this.getIdFromApiUrl(starshipsUri)
@@ -87,7 +87,6 @@ export class PeopleModel extends AbstractModel {
         this.starships.push(starship)
       })
     }
-
 
     this.created = new Date(apiData.created)
     this.edited = new Date(apiData.edited)

@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react'
 import { z } from 'zod'
 import { AbstractModel } from '../../models/AbstractModel'
 import { DefaultItem } from './DefaultItem'
-import { UrlItem } from './UrlItem'
 import { ModelItem } from './ModelItem'
+import { UrlItem } from './UrlItem'
 
 export const DetailTableItem: FC<{
   label: string
@@ -31,7 +31,9 @@ export const DetailTableItem: FC<{
     const list = (
       <ul>
         {value.map((item) => (
-          <li key={item.toString()}><ModelItem model={item} /></li>
+          <li key={item.toString()}>
+            <ModelItem model={item} />
+          </li>
         ))}
       </ul>
     )
